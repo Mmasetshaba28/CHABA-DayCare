@@ -19,7 +19,6 @@
     <Folder Include="Constants\" />
     <Folder Include="Helpers\" />
     <Folder Include="Interfaces\" />
-    <Folder Include="Models\Identity\" />
     <Folder Include="Models\Finance\" />
     <Folder Include="Models\Reports\" />
     <Folder Include="Repositories\Interfaces\" />

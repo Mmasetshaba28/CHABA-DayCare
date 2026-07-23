@@ -1,5 +1,6 @@
 ﻿using CHABA.DayCare.Models.Common;
 using System.ComponentModel.DataAnnotations;
+using CHABA.DayCare.Models.Identity;
 
 namespace CHABA.DayCare.Models.Core
 {
@@ -8,7 +9,7 @@ namespace CHABA.DayCare.Models.Core
 
         [Required]
         [StringLength(150)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [StringLength(50)]
         public string? RegistrationNumber { get; set; }
@@ -25,5 +26,10 @@ namespace CHABA.DayCare.Models.Core
         public string? LogoUrl { get; set; }
 
         public bool IsActive { get; set; } = true;
+
+        public string? PrincipalName { get; set; }
+
+        public string? Motto { get; set; }
+        public ICollection<ApplicationUser> Users { get; set; } = new List<ApplicationUser>();
     }
 }
