@@ -2,6 +2,10 @@ using CHABA.DayCare.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using CHABA.DayCare.Models.Identity;
+using CHABA.DayCare.Repositories.Interfaces;
+using CHABA.DayCare.Repositories.Implementations;
+using CHABA.DayCare.Services.Interfaces;
+using CHABA.DayCare.Services.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +37,10 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LoginPath = "/Identity/Account/Login";
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
 });
+
+builder.Services.AddScoped<IOrganisationRepository, OrganisationRepository>();
+builder.Services.AddScoped<IOrganisationService, OrganisationService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 
 var app = builder.Build();
 

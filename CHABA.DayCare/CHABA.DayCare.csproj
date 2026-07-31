@@ -21,15 +21,12 @@
     <Folder Include="Interfaces\" />
     <Folder Include="Models\Finance\" />
     <Folder Include="Models\Reports\" />
-    <Folder Include="Repositories\Interfaces\" />
-    <Folder Include="Repositories\Implementations\" />
     <Folder Include="Services\Attendance\" />
     <Folder Include="Services\Dashboard\" />
     <Folder Include="Services\Guardian\" />
     <Folder Include="Services\Child\" />
     <Folder Include="Services\Teacher\" />
     <Folder Include="Services\Payment\" />
-    <Folder Include="ViewModels\Dashboard\" />
     <Folder Include="ViewModels\Child\" />
     <Folder Include="ViewModels\Guardian\" />
     <Folder Include="ViewModels\Payment\" />
