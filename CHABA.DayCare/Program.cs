@@ -41,6 +41,10 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddScoped<IOrganisationRepository, OrganisationRepository>();
 builder.Services.AddScoped<IOrganisationService, OrganisationService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
+builder.Services.AddScoped<IChildRepository, ChildRepository>();
+builder.Services.AddScoped<IChildService, ChildService>();
+builder.Services.AddScoped<IClassroomRepository, ClassroomRepository>();
+builder.Services.AddScoped<IClassroomService, ClassroomService>();
 
 var app = builder.Build();
 

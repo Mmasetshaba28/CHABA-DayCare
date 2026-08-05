@@ -1,0 +1,53 @@
+﻿@page
+@model CHABA.DayCare.Pages.Classrooms.CreateModel
+
+@{
+    ViewData["Title"] = "Add Classroom";
+}
+
+<h2>Add Classroom</h2>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label asp-for="Classroom.Name"></label>
+        <input asp-for="Classroom.Name" class="form-control" />
+        <span asp-validation-for="Classroom.Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Classroom.Description"></label>
+        <textarea asp-for="Classroom.Description" class="form-control"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Classroom.MinimumAgeInMonths"></label>
+        <input asp-for="Classroom.MinimumAgeInMonths" class="form-control" />
+        <span asp-validation-for="Classroom.MinimumAgeInMonths" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Classroom.MaximumAgeInMonths"></label>
+        <input asp-for="Classroom.MaximumAgeInMonths" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Classroom.Capacity"></label>
+        <input asp-for="Classroom.Capacity" class="form-control" />
+        <span asp-validation-for="Classroom.Capacity" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Save Classroom
+    </button>
+
+    <a asp-page="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

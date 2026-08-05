@@ -1,0 +1,56 @@
+﻿@page
+@model CHABA.DayCare.Pages.Classrooms.IndexModel
+
+@{
+    ViewData["Title"] = "Classrooms";
+}
+
+<h2>Classrooms</h2>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">
+        Add Classroom
+    </a>
+</p>
+
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age Range</th>
+            <th>Capacity</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @if (Model.Classrooms.Any())
+        {
+            foreach (var classroom in Model.Classrooms)
+            {
+                <tr>
+                    <td>@classroom.Name</td>
+
+                    <td>
+                        @classroom.MinimumAgeInMonths -
+                        @(classroom.MaximumAgeInMonths?.ToString() ?? "+")
+                        months
+                    </td>
+
+                    <td>@classroom.Capacity</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    No classrooms found.
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
