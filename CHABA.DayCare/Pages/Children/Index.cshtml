@@ -1,0 +1,54 @@
+﻿@page
+@model CHABA.DayCare.Pages.Children.IndexModel
+@{
+    ViewData["Title"] = "Children";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Children</h2>
+
+    <a asp-asp-page="Create" class="btn btn-primary">
+        Register Child
+    </a>
+</div>
+
+@if(!Model.Children.Any())
+{
+    <div class="alert alert-info">
+        No children registered yet. Click "Register Child" to add a new child.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Classroom</th>
+                <th>Gender</th>
+                <th>Admission Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach(var child in Model.Children)
+            {
+                <tr>
+
+                    <td>@child.FirstName @child.LastName</td>
+
+                    <td>@child.Classroom.Name</td>
+
+                    <td>@child.Gender</td>
+
+                    <td>@child.AdmissionDate.ToShortDateString()</td>
+
+                    <td>@child.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
