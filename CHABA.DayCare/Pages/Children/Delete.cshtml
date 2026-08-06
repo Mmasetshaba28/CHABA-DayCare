@@ -1,0 +1,38 @@
+﻿@page "{id:int}"
+@model CHABA.DayCare.Pages.Children.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete Child";
+}
+
+<h2>Delete Child</h2>
+
+<div class="alert alert-warning">
+
+    <h4>Are you sure?</h4>
+
+    <p>
+        You are about to remove
+        <strong>@Model.ChildName</strong>.
+    </p>
+
+    <p>
+        This child will no longer appear in the system,
+        but the record will remain in the database.
+    </p>
+
+</div>
+
+<form method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">
+        Delete
+    </button>
+
+    <a asp-page="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>

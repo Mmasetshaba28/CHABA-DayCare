@@ -40,5 +40,14 @@ namespace CHABA.DayCare.Repositories.Implementations
         {
             return await _context.Children.AnyAsync(c => c.Id == id && !c.IsDeleted);
         }
+        public async Task DeleteAsync(Child child)
+        {
+            child.IsDeleted = true;
+            child.ModifiedDate = DateTime.Now;
+
+            _context.Children.Update(child);
+
+            await _context.SaveChangesAsync();
+        }
     }
 }

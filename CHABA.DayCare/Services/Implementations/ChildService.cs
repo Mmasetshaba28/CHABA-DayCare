@@ -32,5 +32,14 @@ namespace CHABA.DayCare.Services.Implementations
         {
             await _childRepository.UpdateAsync(child);
         }
+        public async Task DeleteChildAsync(int id)
+        {
+            var child = await _childRepository.GetByIdAsync(id);
+
+            if (child == null)
+                return;
+
+            await _childRepository.DeleteAsync(child);
+        }
     }
 }

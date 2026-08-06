@@ -9,5 +9,6 @@ namespace CHABA.DayCare.Repositories.Interfaces
         Task AddAsync(Child child);
         Task UpdateAsync(Child child);
         Task<bool> ExistsAsync(int id);
+        Task DeleteAsync(Child child);
     }
 }

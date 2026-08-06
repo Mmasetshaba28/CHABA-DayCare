@@ -8,6 +8,7 @@ namespace CHABA.DayCare.Services.Interfaces
         Task<Child?> GetChildAsync(int id);
         Task CreateChildAsync(Child child);
         Task UpdateChildAsync(Child child);
+        Task DeleteChildAsync(int id);
 
     }
 }
