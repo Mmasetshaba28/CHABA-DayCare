@@ -1,0 +1,91 @@
+﻿@page "{id:int}"
+@model CHABA.DayCare.Pages.Children.EditModel
+
+@{
+    ViewData["Title"] = "Edit Child";
+}
+
+<h2>Edit Child</h2>
+
+<form method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="Child.FirstName"></label>
+            <input asp-for="Child.FirstName" class="form-control" />
+            <span asp-validation-for="Child.FirstName" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="Child.LastName"></label>
+            <input asp-for="Child.LastName" class="form-control" />
+            <span asp-validation-for="Child.LastName" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="Child.DateOfBirth"></label>
+            <input asp-for="Child.DateOfBirth" class="form-control" />
+            <span asp-validation-for="Child.DateOfBirth" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="Child.AdmissionDate"></label>
+            <input asp-for="Child.AdmissionDate" class="form-control" />
+            <span asp-validation-for="Child.AdmissionDate" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="Child.Gender"></label>
+            <select asp-for="Child.Gender"
+                    asp-items="Html.GetEnumSelectList<CHABA.DayCare.Models.Child.Gender>()"
+                    class="form-select">
+            </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="Child.ClassroomId"></label>
+            <select asp-for="Child.ClassroomId"
+                    asp-items="Model.Child.Classrooms"
+                    class="form-select">
+            </select>
+        </div>
+
+        <div class="col-12 mb-3">
+            <label asp-for="Child.Allergies"></label>
+            <textarea asp-for="Child.Allergies" class="form-control"></textarea>
+        </div>
+
+        <div class="col-12 mb-3">
+            <label asp-for="Child.MedicalConditions"></label>
+            <textarea asp-for="Child.MedicalConditions" class="form-control"></textarea>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="Child.DoctorName"></label>
+            <input asp-for="Child.DoctorName" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="Child.DoctorPhone"></label>
+            <input asp-for="Child.DoctorPhone" class="form-control" />
+        </div>
+
+    </div>
+
+    <button class="btn btn-success" type="submit">
+        Update Child
+    </button>
+
+    <a asp-page="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
