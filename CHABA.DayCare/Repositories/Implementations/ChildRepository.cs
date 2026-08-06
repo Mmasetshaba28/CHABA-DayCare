@@ -19,14 +19,14 @@ namespace CHABA.DayCare.Repositories.Implementations
             return await _context.Children.Include(c => c.Classroom).Where(c => !c.IsDeleted).ToListAsync();
         }
 
-        public async Task<Child> GetByIdAsync(int id)
+        public async Task<Child?> GetByIdAsync(int id)
         {
             return await _context.Children.Include(c => c.Classroom).FirstOrDefaultAsync(c => c.Id == id && !c.IsDeleted);
         }
 
         public async Task AddAsync(Child child)
         {
-            _context.Children.AddAsync(child);
+            await _context.Children.AddAsync(child);
             await _context.SaveChangesAsync();
         }
 

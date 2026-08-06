@@ -1,56 +1,60 @@
 ﻿@page
-@model CHABA.DayCare.Pages.Classrooms.IndexModel
+@model IndexModel
 
 @{
-    ViewData["Title"] = "Classrooms";
+    ViewData["Title"] = "Dashboard";
 }
 
-<h2>Classrooms</h2>
+<div class="text-center">
 
-<p>
-    <a asp-page="Create" class="btn btn-primary">
-        Add Classroom
-    </a>
-</p>
+    <h1 class="display-4 text-success">
+        CHABA DayCare Management System
+    </h1>
 
-<table class="table table-bordered table-striped">
+    <p class="lead">
+        Welcome to the DayCare Management Dashboard.
+    </p>
 
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Age Range</th>
-            <th>Capacity</th>
-        </tr>
-    </thead>
+</div>
 
-    <tbody>
+<hr />
 
-        @if (Model.Classrooms.Any())
-        {
-            foreach (var classroom in Model.Classrooms)
-            {
-                <tr>
-                    <td>@classroom.Name</td>
+<div class="row mt-4">
 
-                    <td>
-                        @classroom.MinimumAgeInMonths -
-                        @(classroom.MaximumAgeInMonths?.ToString() ?? "+")
-                        months
-                    </td>
+    <div class="col-md-3 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h5>Children</h5>
+                <h2>0</h2>
+            </div>
+        </div>
+    </div>
 
-                    <td>@classroom.Capacity</td>
-                </tr>
-            }
-        }
-        else
-        {
-            <tr>
-                <td colspan="3" class="text-center">
-                    No classrooms found.
-                </td>
-            </tr>
-        }
+    <div class="col-md-3 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h5>Classrooms</h5>
+                <h2>4</h2>
+            </div>
+        </div>
+    </div>
 
-    </tbody>
+    <div class="col-md-3 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h5>Teachers</h5>
+                <h2>0</h2>
+            </div>
+        </div>
+    </div>
 
-</table>
+    <div class="col-md-3 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h5>Attendance</h5>
+                <h2>0%</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
