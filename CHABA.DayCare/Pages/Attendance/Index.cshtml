@@ -1,0 +1,72 @@
+﻿@page
+@model CHABA.DayCare.Pages.Attendance.IndexModel
+
+@{
+    ViewData["Title"] = "Attendance";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Attendance</h2>
+
+    <a asp-page="Create" class="btn btn-primary">
+        Record Attendance
+    </a>
+</div>
+
+@if (Model.AttendanceRecords.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+
+            <thead class="table-light">
+                <tr>
+                    <th>Child</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Arrival</th>
+                    <th>Departure</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var attendance in Model.AttendanceRecords)
+                {
+                    <tr>
+                        <td>
+                            @attendance.Child.FirstName
+                            @attendance.Child.LastName
+                        </td>
+
+                        <td>
+                            @attendance.Date.ToString("dd/MM/yyyy")
+                        </td>
+
+                        <td>
+                            @attendance.Status
+                        </td>
+
+                        <td>
+                            @(attendance.ArrivalTime?.ToString(@"hh\:mm") ?? "-")
+                        </td>
+
+                        <td>
+                            @(attendance.DepartureTime?.ToString(@"hh\:mm") ?? "-")
+                        </td>
+
+                        <td>
+                            @(attendance.Notes ?? "-")
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        No attendance records have been recorded yet.
+    </div>
+}

@@ -1,0 +1,95 @@
+﻿@page
+@model CHABA.DayCare.Pages.Attendance.CreateModel
+
+@{
+    ViewData["Title"] = "Record Attendance";
+}
+
+<h2>Record Attendance</h2>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label asp-for="Attendance.ChildId" class="form-label"></label>
+
+        <select asp-for="Attendance.ChildId"
+                asp-items="Model.Attendance.Children"
+                class="form-select">
+            <option value="">-- Select Child --</option>
+        </select>
+
+        <span asp-validation-for="Attendance.ChildId"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Attendance.Date" class="form-label"></label>
+
+        <input asp-for="Attendance.Date"
+               class="form-control"
+               type="date" />
+
+        <span asp-validation-for="Attendance.Date"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Attendance.Status" class="form-label"></label>
+
+        <select asp-for="Attendance.Status"
+                asp-items="Html.GetEnumSelectList<CHABA.DayCare.Models.Child.AttendanceStatus>()"
+                class="form-select">
+            <option value="">-- Select Status --</option>
+        </select>
+
+        <span asp-validation-for="Attendance.Status"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Attendance.ArrivalTime" class="form-label"></label>
+
+        <input asp-for="Attendance.ArrivalTime"
+               class="form-control"
+               type="time" />
+
+        <span asp-validation-for="Attendance.ArrivalTime"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Attendance.DepartureTime" class="form-label"></label>
+
+        <input asp-for="Attendance.DepartureTime"
+               class="form-control"
+               type="time" />
+
+        <span asp-validation-for="Attendance.DepartureTime"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Attendance.Notes" class="form-label"></label>
+
+        <textarea asp-for="Attendance.Notes"
+                  class="form-control"
+                  rows="3"></textarea>
+
+        <span asp-validation-for="Attendance.Notes"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Save Attendance
+    </button>
+
+    <a asp-page="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

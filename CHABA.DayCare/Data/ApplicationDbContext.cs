@@ -18,6 +18,7 @@ namespace CHABA.DayCare.Data
         public DbSet<Classroom> Classrooms { get; set; }
         public DbSet<Child> Children { get; set; }
         public DbSet<Guardian> Guardians { get; set; }
+        public DbSet<Attendance> Attendances { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
