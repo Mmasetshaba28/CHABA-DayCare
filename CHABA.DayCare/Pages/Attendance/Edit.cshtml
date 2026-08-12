@@ -1,0 +1,95 @@
+﻿@page "{id:int}"
+@model CHABA.DayCare.Pages.Attendance.EditModel
+
+@{
+    ViewData["Title"] = "Edit Attendance";
+}
+
+<h2>Edit Attendance</h2>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label asp-for="AttendanceModel.ChildId" class="form-label"></label>
+
+        <select asp-for="AttendanceModel.ChildId"
+                asp-items="Model.AttendanceModel.Children"
+                class="form-select">
+            <option value="">-- Select Child --</option>
+        </select>
+
+        <span asp-validation-for="AttendanceModel.ChildId"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AttendanceModel.Date" class="form-label"></label>
+
+        <input asp-for="AttendanceModel.Date"
+               class="form-control"
+               type="date" />
+
+        <span asp-validation-for="AttendanceModel.Date"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AttendanceModel.Status" class="form-label"></label>
+
+        <select asp-for="AttendanceModel.Status"
+                asp-items="Html.GetEnumSelectList<CHABA.DayCare.Models.Child.AttendanceStatus>()"
+                class="form-select">
+            <option value="">-- Select Status --</option>
+        </select>
+
+        <span asp-validation-for="AttendanceModel.Status"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AttendanceModel.ArrivalTime" class="form-label"></label>
+
+        <input asp-for="AttendanceModel.ArrivalTime"
+               class="form-control"
+               type="time" />
+
+        <span asp-validation-for="AttendanceModel.ArrivalTime"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AttendanceModel.DepartureTime" class="form-label"></label>
+
+        <input asp-for="AttendanceModel.DepartureTime"
+               class="form-control"
+               type="time" />
+
+        <span asp-validation-for="AttendanceModel.DepartureTime"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AttendanceModel.Notes" class="form-label"></label>
+
+        <textarea asp-for="AttendanceModel.Notes"
+                  class="form-control"
+                  rows="3"></textarea>
+
+        <span asp-validation-for="AttendanceModel.Notes"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Save Changes
+    </button>
+
+    <a asp-page="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

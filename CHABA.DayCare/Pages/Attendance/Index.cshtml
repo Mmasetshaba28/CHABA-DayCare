@@ -26,6 +26,7 @@
                     <th>Arrival</th>
                     <th>Departure</th>
                     <th>Notes</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
 
@@ -56,6 +57,18 @@
 
                         <td>
                             @(attendance.Notes ?? "-")
+                        </td>
+                        <td>
+                            <a asp-page="Edit"
+                               asp-route-id="@attendance.Id"
+                               class="btn btn-sm btn-primary">
+                                Edit
+                            </a>
+                            <a asp-page="Delete"
+                               asp-route-id="@attendance.Id"
+                               class="btn btn-sm btn-danger">
+                                Delete
+                            </a>
                         </td>
                     </tr>
                 }
