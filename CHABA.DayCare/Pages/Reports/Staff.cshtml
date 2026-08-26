@@ -1,0 +1,112 @@
+﻿@page
+@model CHABA.DayCare.Pages.Reports.StaffModel
+
+@{
+    ViewData["Title"] = "Staff Report";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2>Staff Details Report</h2>
+
+        <div>
+            <form method="post" asp-page-handler="Export" class="d-inline">
+                <button type="submit" class="btn btn-success me-2">
+                    Export to Excel
+                </button>
+            </form>
+
+            <a asp-page="/Reports/Index" class="btn btn-secondary">
+                Back to Reports
+            </a>
+        </div>
+
+    </div>
+
+    @if (Model.StaffMembers.Any())
+    {
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover">
+
+                <thead class="table-light">
+                    <tr>
+                        <th>Staff Member</th>
+                        <th>ID Number</th>
+                        <th>Role</th>
+                        <th>Qualification</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Date Joined</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var staff in Model.StaffMembers)
+                    {
+                        <tr>
+
+                            <td>
+                                @staff.FirstName @staff.LastName
+                            </td>
+
+                            <td>
+                                @staff.IDNumber
+                            </td>
+
+                            <td>
+                                @staff.Role
+                            </td>
+
+                            <td>
+                                @(staff.Qualification ?? "-")
+                            </td>
+
+                            <td>
+                                @staff.PhoneNumber
+                            </td>
+
+                            <td>
+                                @(staff.Email ?? "-")
+                            </td>
+
+                            <td>
+                                @staff.DateJoined.ToString("dd/MM/yyyy")
+                            </td>
+
+                            <td>
+                                @if (staff.IsActive)
+                                {
+                                    <span class="badge bg-success">
+                                        Active
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">
+                                        Inactive
+                                    </span>
+                                }
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            No staff members have been registered yet.
+        </div>
+    }
+
+</div>

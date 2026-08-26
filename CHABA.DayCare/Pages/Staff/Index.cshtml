@@ -1,0 +1,96 @@
+﻿@page
+@model CHABA.DayCare.Pages.Staff.IndexModel
+
+@{
+    ViewData["Title"] = "Staff";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Staff</h2>
+
+    <a asp-page="Create" class="btn btn-primary">
+        Add Staff Member
+    </a>
+</div>
+
+@if (Model.StaffMembers.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Qualification</th>
+                    <th>Phone Number</th>
+                    <th>Classroom</th>
+                    <th>Date Joined</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var staff in Model.StaffMembers)
+                {
+                    <tr>
+                        <td>
+                            @staff.FirstName @staff.LastName
+                        </td>
+
+                        <td>
+                            @staff.Role
+                        </td>
+
+                        <td>
+                            @(staff.Qualification ?? "-")
+                        </td>
+
+                        <td>
+                            @staff.PhoneNumber
+                        </td>
+
+                        <td>
+                            @(staff.Classroom?.Name ?? "-")
+                        </td>
+
+                        <td>
+                            @staff.DateJoined.ToString("dd/MM/yyyy")
+                        </td>
+
+                        <td>
+                            @if (staff.IsActive)
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Inactive</span>
+                            }
+                        </td>
+
+                        <td>
+                            <a asp-page="Edit"
+                               asp-route-id="@staff.Id"
+                               class="btn btn-sm btn-warning">
+                                Edit
+                            </a>
+
+                            <a asp-page="Delete"
+                               asp-route-id="@staff.Id"
+                               class="btn btn-sm btn-danger">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        No staff members have been registered yet.
+    </div>
+}

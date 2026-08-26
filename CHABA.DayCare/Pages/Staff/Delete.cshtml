@@ -1,0 +1,80 @@
+﻿@page "{id:int}"
+@model CHABA.DayCare.Pages.Staff.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete Staff Member";
+}
+
+<h2>Delete Staff Member</h2>
+
+<div class="alert alert-warning">
+    <strong>Are you sure you want to delete this staff member?</strong>
+    <br />
+    This staff member will no longer appear in the active staff list.
+</div>
+
+<div class="card">
+    <div class="card-body">
+
+        <dl class="row">
+
+            <dt class="col-sm-3">
+                Name
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Staff.FirstName @Model.Staff.LastName
+            </dd>
+
+            <dt class="col-sm-3">
+                ID Number
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Staff.IDNumber
+            </dd>
+
+            <dt class="col-sm-3">
+                Role
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Staff.Role
+            </dd>
+
+            <dt class="col-sm-3">
+                Qualification
+            </dt>
+            <dd class="col-sm-9">
+                @(Model.Staff.Qualification ?? "-")
+            </dd>
+
+            <dt class="col-sm-3">
+                Phone Number
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Staff.PhoneNumber
+            </dd>
+
+            <dt class="col-sm-3">
+                Classroom
+            </dt>
+            <dd class="col-sm-9">
+                @(Model.Staff.Classroom?.Name ?? "No Classroom")
+            </dd>
+
+        </dl>
+
+        <form method="post">
+
+            <input type="hidden" asp-for="Staff.Id" />
+
+            <button type="submit" class="btn btn-danger">
+                Delete Staff Member
+            </button>
+
+            <a asp-page="Index" class="btn btn-secondary">
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+</div>

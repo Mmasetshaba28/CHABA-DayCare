@@ -49,6 +49,11 @@ builder.Services.AddScoped<IGuardianRepository, GuardianRepository>();
 builder.Services.AddScoped<IGuardianService, GuardianService>();
 builder.Services.AddScoped<IAttendanceRepository, AttendanceRepository>();
 builder.Services.AddScoped<IAttendanceService, AttendanceService>();
+builder.Services.AddScoped<IStaffService, StaffService>();
+builder.Services.AddScoped<IStaffRepository, StaffRepository>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+
 
 var app = builder.Build();
 

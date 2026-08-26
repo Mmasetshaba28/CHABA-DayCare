@@ -1,0 +1,50 @@
+﻿@page
+@model CHABA.DayCare.Pages.Reports.IndexModel
+
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Reports</h2>
+
+        <a asp-page="/Index" class="btn btn-secondary">
+            Back to Dashboard
+        </a>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        Staff Details
+                    </h5>
+
+                    <p class="card-text">
+                        View staff information including
+                        ID numbers, roles, qualifications,
+                        contact details and date joined.
+                    </p>
+
+                    <p>
+                        <strong>@Model.StaffCount</strong>
+                        staff members
+                    </p>
+
+                    <a asp-page="Staff"
+                       class="btn btn-primary">
+                        View Staff Report
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

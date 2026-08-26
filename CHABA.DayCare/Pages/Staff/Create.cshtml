@@ -1,0 +1,115 @@
+﻿@page
+@model CHABA.DayCare.Pages.Staff.CreateModel
+
+@{
+    ViewData["Title"] = "Register Staff Member";
+}
+
+<h2>Register Staff Member</h2>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label asp-for="Staff.FirstName" class="form-label"></label>
+        <input asp-for="Staff.FirstName" class="form-control" />
+        <span asp-validation-for="Staff.FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Staff.LastName" class="form-label"></label>
+        <input asp-for="Staff.LastName" class="form-control" />
+        <span asp-validation-for="Staff.LastName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Staff.IDNumber" class="form-label"></label>
+        <input asp-for="Staff.IDNumber"
+               class="form-control"
+               maxlength="13" />
+        <span asp-validation-for="Staff.IDNumber" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Staff.Role" class="form-label"></label>
+
+        <select asp-for="Staff.Role" class="form-select">
+            <option value="">-- Select Role --</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Principal">Principal</option>
+            <option value="Administrator">Administrator</option>
+            <option value="Cook">Cook</option>
+            <option value="Gardener">Gardener</option>
+        </select>
+
+        <span asp-validation-for="Staff.Role" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Staff.Qualification" class="form-label"></label>
+        <input asp-for="Staff.Qualification" class="form-control" />
+        <span asp-validation-for="Staff.Qualification" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Staff.PhoneNumber" class="form-label"></label>
+        <input asp-for="Staff.PhoneNumber" class="form-control" />
+        <span asp-validation-for="Staff.PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Staff.AlternativePhoneNumber" class="form-label"></label>
+        <input asp-for="Staff.AlternativePhoneNumber" class="form-control" />
+        <span asp-validation-for="Staff.AlternativePhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Staff.Email" class="form-label"></label>
+        <input asp-for="Staff.Email" class="form-control" />
+        <span asp-validation-for="Staff.Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Staff.DateJoined" class="form-label"></label>
+        <input asp-for="Staff.DateJoined"
+               type="date"
+               class="form-control" />
+        <span asp-validation-for="Staff.DateJoined" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Staff.ClassroomId" class="form-label"></label>
+
+        <select asp-for="Staff.ClassroomId"
+                asp-items="Model.Staff.Classrooms"
+                class="form-select">
+
+            <option value="">-- No Classroom --</option>
+
+        </select>
+
+        <span asp-validation-for="Staff.ClassroomId" class="text-danger"></span>
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="Staff.IsActive"
+               class="form-check-input" />
+
+        <label asp-for="Staff.IsActive"
+               class="form-check-label">
+        </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Save Staff Member
+    </button>
+
+    <a asp-page="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

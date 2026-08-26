@@ -16,7 +16,7 @@
 
     <div class="row">
 
-        <div class="col-md-3 mb-3">
+        <div class="col-md-4 col-lg mb-3">
             <div class="card">
                 <div class="card-body">
                     <h5>Children</h5>
@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <div class="col-md-3 mb-3">
+        <div class="col-md-4 col-lg mb-3">
             <div class="card">
                 <div class="card-body">
                     <h5>Classrooms</h5>
@@ -34,7 +34,16 @@
             </div>
         </div>
 
-        <div class="col-md-3 mb-3">
+        <div class="col-md-4 col-lg mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Staff</h5>
+                    <h2>@Model.Dashboard.StaffCount</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-lg mb-3">
             <div class="card">
                 <div class="card-body">
                     <h5>Teachers</h5>
@@ -43,13 +52,95 @@
             </div>
         </div>
 
-        <div class="col-md-3 mb-3">
+        <div class="col-md-4 col-lg mb-3">
             <div class="card">
                 <div class="card-body">
-                    <h5>Parents</h5>
+                    <h5>Guardians</h5>
                     <h2>@Model.Dashboard.ParentCount</h2>
                 </div>
             </div>
+        </div>
+
+    </div>
+
+    <hr />
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>Today's Attendance</h4>
+
+        <span class="text-muted">
+            @DateTime.Today.ToString("dd/MM/yyyy")
+        </span>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+            <div class="card border-success">
+                <div class="card-body">
+                    <h5 class="text-success">Present</h5>
+                    <h2>@Model.Dashboard.PresentToday</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card border-danger">
+                <div class="card-body">
+                    <h5 class="text-danger">Absent</h5>
+                    <h2>@Model.Dashboard.AbsentToday</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card border-warning">
+                <div class="card-body">
+                    <h5 class="text-warning">Late</h5>
+                    <h2>@Model.Dashboard.LateToday</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card border-secondary">
+                <div class="card-body">
+                    <h5 class="text-secondary">Not Recorded</h5>
+                    <h2>@Model.Dashboard.NotRecordedToday</h2>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4>Financial Summary</h4>
+
+            <span class="text-muted">
+                @DateTime.Today.ToString("MMMM yyyy")
+            </span>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+                <div class="card border-success">
+                    <div class="card-body">
+                        <h5 class="text-success">Payments Today</h5>
+                        <h2>R @Model.Dashboard.PaymentsToday.ToString("N2")</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="card border-primary">
+                    <div class="card-body">
+                        <h5 class="text-primary">Payments This Month</h5>
+                        <h2>R @Model.Dashboard.PaymentsThisMonth.ToString("N2")</h2>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -60,19 +151,33 @@
 
     <div class="mt-3">
 
-        <a class="btn btn-primary me-2">
+        <a asp-page="/Children/Create"
+           class="btn btn-primary me-2 mb-2">
             Register Child
         </a>
 
-        <a class="btn btn-success me-2">
+        <a asp-page="/Attendance/Create"
+           class="btn btn-success me-2 mb-2">
             Record Attendance
         </a>
 
-        <a class="btn btn-warning me-2">
+        <a asp-page="/Finance/Create"
+           class="btn btn-warning me-2 mb-2">
             Receive Payment
         </a>
 
-        <a class="btn btn-secondary">
+        <a asp-page="/Guardians/Create"
+           class="btn btn-info me-2 mb-2">
+            Add Guardian
+        </a>
+
+        <a asp-page="/Staff/Create"
+           class="btn btn-dark me-2 mb-2">
+            Add Staff
+        </a>
+
+        <a asp-page="/Reports/Index"
+           class="btn btn-secondary mb-2">
             Reports
         </a>
 
