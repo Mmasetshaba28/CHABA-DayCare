@@ -42,5 +42,17 @@ namespace CHABA.DayCare.Services.Implementations
         {
             return await _attendanceRepository.ExistsAsync(id);
         }
+        public async Task<List<Attendance>> GetAttendanceByDateAsync(DateTime date)
+        {
+            return await _attendanceRepository.GetByDateAsync(date);
+        }
+        public async Task<bool> AttendanceExistsForChildAndDateAsync(
+    int childId,
+    DateTime date)
+        {
+            return await _attendanceRepository.ExistsForChildAndDateAsync(
+                childId,
+                date);
+        }
     }
 }

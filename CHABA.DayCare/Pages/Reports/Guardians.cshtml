@@ -1,0 +1,144 @@
+﻿@page
+@model CHABA.DayCare.Pages.Reports.GuardiansModel
+
+@{
+    ViewData["Title"] = "Guardians Report";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2>Guardians Details Report</h2>
+
+        <div>
+
+            <form method="post"
+                  asp-page-handler="Export"
+                  class="d-inline">
+
+                <button type="submit"
+                        class="btn btn-success me-2">
+                    Export to Excel
+                </button>
+
+            </form>
+
+            <a asp-page="/Reports/Index"
+               class="btn btn-secondary">
+                Back to Reports
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Guardian Name</th>
+                            <th>Child</th>
+                            <th>Relationship</th>
+                            <th>Phone Number</th>
+                            <th>Alternative Phone</th>
+                            <th>Email</th>
+                            <th>Physical Address</th>
+                            <th>Occupation</th>
+                            <th>Employer</th>
+                            <th>Primary Contact</th>
+                            <th>Emergency Contact</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @if (Model.Guardians.Any())
+                        {
+                            foreach (var guardian in Model.Guardians)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @guardian.FirstName @guardian.LastName
+                                    </td>
+
+                                    <td>
+                                        @if (guardian.Child != null)
+                                        {
+                                            @guardian.Child.FirstName @guardian.Child.LastName
+                                        }
+                                        else
+                                        {
+                                            <span>-</span>
+                                        }
+                                    </td>
+
+                                    <td>
+                                        @guardian.Relationship
+                                    </td>
+
+                                    <td>
+                                        @guardian.PhoneNumber
+                                    </td>
+
+                                    <td>
+                                        @(guardian.AlternativePhoneNumber ?? "-")
+                                    </td>
+
+                                    <td>
+                                        @(guardian.Email ?? "-")
+                                    </td>
+
+                                    <td>
+                                        @(guardian.PhysicalAddress ?? "-")
+                                    </td>
+
+                                    <td>
+                                        @(guardian.Occupation ?? "-")
+                                    </td>
+
+                                    <td>
+                                        @(guardian.Employer ?? "-")
+                                    </td>
+
+                                    <td>
+                                        @(guardian.IsPrimaryContact ? "Yes" : "No")
+                                    </td>
+
+                                    <td>
+                                        @(guardian.IsEmergencyContact ? "Yes" : "No")
+                                    </td>
+
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="11"
+                                    class="text-center">
+                                    No guardians found.
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

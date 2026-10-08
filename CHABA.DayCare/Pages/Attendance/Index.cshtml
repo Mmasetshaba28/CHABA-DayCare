@@ -11,6 +11,122 @@
     <a asp-page="Create" class="btn btn-primary">
         Record Attendance
     </a>
+
+</div>
+<div class="card mb-4">
+    <div class="card-body">
+
+        <form method="get" class="row g-3 align-items-end">
+
+            <div class="col-md-4">
+
+                <label asp-for="SelectedDate"
+                       class="form-label">
+                    Attendance Date
+                </label>
+
+                <input asp-for="SelectedDate"
+                       type="date"
+                       class="form-control" />
+
+            </div>
+
+            <div class="col-md-2">
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    View Attendance
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<div class="row mb-4">
+
+    <div class="col-md-3 mb-3">
+        <div class="card h-100">
+            <div class="card-body text-center">
+
+                <h6 class="text-muted">
+                    Present
+                </h6>
+
+                <h2>
+                    @Model.PresentCount
+                </h2>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card h-100">
+            <div class="card-body text-center">
+
+                <h6 class="text-muted">
+                    Absent
+                </h6>
+
+                <h2>
+                    @Model.AbsentCount
+                </h2>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card h-100">
+            <div class="card-body text-center">
+
+                <h6 class="text-muted">
+                    Late
+                </h6>
+
+                <h2>
+                    @Model.LateCount
+                </h2>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card h-100">
+            <div class="card-body text-center">
+
+                <h6 class="text-muted">
+                    Excused
+                </h6>
+
+                <h2>
+                    @Model.ExcusedCount
+                </h2>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card h-100">
+            <div class="card-body text-center">
+
+                <h6 class="text-muted">
+                    Not Recorded
+                </h6>
+
+                <h2>
+                    @Model.NotRecordedCount
+                </h2>
+
+            </div>
+        </div>
+    </div>
+
 </div>
 
 @if (Model.AttendanceRecords.Any())

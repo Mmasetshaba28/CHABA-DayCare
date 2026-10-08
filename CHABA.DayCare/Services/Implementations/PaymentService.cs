@@ -40,5 +40,13 @@ namespace CHABA.DayCare.Services.Implementations
                 await _paymentRepository.DeleteAsync(payment);
             }
         }
+        public async Task<List<Payment>> GetPaymentsByDateRangeAsync(
+    DateTime fromDate,
+    DateTime toDate)
+        {
+            return await _paymentRepository.GetByDateRangeAsync(
+                fromDate,
+                toDate);
+        }
     }
 }

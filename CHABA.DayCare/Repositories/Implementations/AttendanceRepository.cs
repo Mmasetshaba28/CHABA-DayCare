@@ -56,5 +56,20 @@ namespace CHABA.DayCare.Repositories.Implementations
             return await _context.Attendances
                 .AnyAsync(a => a.Id == id && !a.IsDeleted);
         }
+        public async Task<bool> ExistsForChildAndDateAsync(int childId, DateTime date)
+        {
+            return await _context.Attendances.AnyAsync(a =>
+                    a.ChildId == childId &&
+                    a.Date.Date == date.Date &&
+                    !a.IsDeleted);
+        }
+        public async Task<List<Attendance>> GetByDateAsync(DateTime date)
+        {
+            return await _context.Attendances
+                .Include(a => a.Child)
+                .Where(a => a.Date.Date == date.Date && !a.IsDeleted)
+                .OrderBy(a => a.Child.FirstName)
+                .ToListAsync();
+        }
     }
 }

@@ -31,6 +31,21 @@ namespace CHABA.DayCare.Pages.Attendance
                 return Page();
             }
 
+            var attendanceExists =
+    await _attendanceService.AttendanceExistsForChildAndDateAsync(
+        Attendance.ChildId,
+        Attendance.Date);
+
+            if (attendanceExists)
+            {
+                ModelState.AddModelError(
+                    "Attendance.ChildId",
+                    "Attendance has already been recorded for this child on this date.");
+
+                await LoadChildren();
+                return Page();
+            }
+
             var attendance = new Models.Child.Attendance
             {
                 ChildId = Attendance.ChildId,

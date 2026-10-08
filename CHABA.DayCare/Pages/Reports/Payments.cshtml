@@ -1,0 +1,200 @@
+﻿@page
+@model CHABA.DayCare.Pages.Reports.PaymentsModel
+
+@{
+    ViewData["Title"] = "Payments Report";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2>Payments Report</h2>
+
+        <a asp-page="/Reports/Index"
+           class="btn btn-secondary">
+            Back to Reports
+        </a>
+
+    </div>
+
+    <div class="card mb-4">
+
+        <div class="card-body">
+
+            <form method="get"
+                  class="row g-3 align-items-end">
+
+                <div class="col-md-4">
+
+                    <label asp-for="FromDate"
+                           class="form-label">
+                        From Date
+                    </label>
+
+                    <input asp-for="FromDate"
+                           type="date"
+                           class="form-control" />
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <label asp-for="ToDate"
+                           class="form-label">
+                        To Date
+                    </label>
+
+                    <input asp-for="ToDate"
+                           type="date"
+                           class="form-control" />
+
+                </div>
+
+                <div class="col-md-2">
+
+                    <button type="submit"
+                            class="btn btn-primary">
+                        View Report
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    @if (Model.FromDate <= Model.ToDate)
+    {
+        <div class="d-flex justify-content-between align-items-center mb-3">
+
+            <div>
+
+                <h4>
+                    Payments from
+                    @Model.FromDate.ToString("dd/MM/yyyy")
+                    to
+                    @Model.ToDate.ToString("dd/MM/yyyy")
+                </h4>
+
+                <p class="mb-0">
+                    Total Payments:
+                    <strong>
+                        R @Model.TotalPayments.ToString("N2")
+                    </strong>
+                </p>
+
+            </div>
+
+            <form method="post"
+                  asp-page-handler="Export">
+
+                <input type="hidden"
+                       name="fromDate"
+                       value="@Model.FromDate.ToString("yyyy-MM-dd")" />
+
+                <input type="hidden"
+                       name="toDate"
+                       value="@Model.ToDate.ToString("yyyy-MM-dd")" />
+
+                <button type="submit"
+                        class="btn btn-success">
+                    Export to Excel
+                </button>
+
+            </form>
+
+        </div>
+
+        @if (Model.Payments.Any())
+        {
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Child</th>
+                            <th>Amount</th>
+                            <th>Payment Date</th>
+                            <th>Payment Method</th>
+                            <th>Reference</th>
+                            <th>Description</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var payment in Model.Payments)
+                        {
+                            <tr>
+
+                                <td>
+                                    @payment.Child?.FirstName
+                                    @payment.Child?.LastName
+                                </td>
+
+                                <td>
+                                    R @payment.Amount.ToString("N2")
+                                </td>
+
+                                <td>
+                                    @payment.PaymentDate.ToString("dd/MM/yyyy")
+                                </td>
+
+                                <td>
+                                    @payment.PaymentMethod
+                                </td>
+
+                                <td>
+                                    @(payment.ReferenceNumber ?? "-")
+                                </td>
+
+                                <td>
+                                    @(payment.Description ?? "-")
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                    <tfoot>
+
+                        <tr>
+                            <th colspan="1">
+                                Total
+                            </th>
+
+                            <th>
+                                R @Model.TotalPayments.ToString("N2")
+                            </th>
+
+                            <th colspan="4"></th>
+                        </tr>
+
+                    </tfoot>
+
+                </table>
+
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info">
+                No payments were found for the selected date range.
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            The From Date cannot be later than the To Date.
+        </div>
+    }
+
+</div>

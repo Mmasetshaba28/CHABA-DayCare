@@ -6,6 +6,8 @@ namespace CHABA.DayCare.Services.Interfaces
     {
         Task<List<Attendance>> GetAllAttendanceAsync();
         Task<List<Attendance>> GetAttendanceByChildAsync(int childId);
+        Task<List<Attendance>> GetAttendanceByDateAsync(DateTime date);
+        Task<bool> AttendanceExistsForChildAndDateAsync(int childId,DateTime date);
         Task<Attendance?> GetAttendanceAsync(int id);
         Task CreateAttendanceAsync(Attendance attendance);
         Task UpdateAttendanceAsync(Attendance attendance);

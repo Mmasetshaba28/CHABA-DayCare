@@ -45,5 +45,18 @@ namespace CHABA.DayCare.Repositories.Implementations
             _context.Payments.Update(payment);
             await _context.SaveChangesAsync();
         }
+        public async Task<List<Payment>> GetByDateRangeAsync(
+    DateTime fromDate,
+    DateTime toDate)
+        {
+            return await _context.Payments
+                .Include(p => p.Child)
+                .Where(p =>
+                    !p.IsDeleted &&
+                    p.PaymentDate.Date >= fromDate.Date &&
+                    p.PaymentDate.Date <= toDate.Date)
+                .OrderByDescending(p => p.PaymentDate)
+                .ToListAsync();
+        }
     }
 }

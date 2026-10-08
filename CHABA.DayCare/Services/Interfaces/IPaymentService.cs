@@ -5,6 +5,7 @@ namespace CHABA.DayCare.Services.Interfaces
     public interface IPaymentService
     {
         Task<List<Payment>> GetAllPaymentsAsync();
+        Task<List<Payment>> GetPaymentsByDateRangeAsync(DateTime fromDate, DateTime toDate);
         Task<Payment?> GetPaymentAsync(int id);
         Task CreatePaymentAsync(Payment payment);
         Task UpdatePaymentAsync(Payment payment);
